@@ -18,6 +18,7 @@ require 'vendor/autoload.php'; // Cargar Composer
     ]);
     echo "<center><h3 style='border:1px solid green;background-color:rgb(64,145,108);color:white;padding:1%;'>Documento insertado con ID: " . $resultado->getInsertedId() . "</h3></center>";
     
-include "index.html";
+header("Refresh: 3; url=registros.php"); // Redirige a la tabla después de 3 segundos
+echo "<center><p>Redirigiendo a la lista de registros...</p></center>";
 
 ?>

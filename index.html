@@ -3,36 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <title>Práctica 2 - Despliegue en sitio Render o Railway</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Práctica 2 - Registro de Aprendices</title>
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            max-width: 550px;
+            width: 100%;
+            border-top: 5px solid #2d6a4f; /* Detalle verde arriba */
+        }
+        h2 {
+            color: #2d6a4f;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        .form-control:focus {
+            border-color: #52b788;
+            box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+            background-color: #fff;
+        }
+        .btn-custom {
+            background-color: #2d6a4f;
+            border: none;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #1b4332;
+            color: white;
+        }
+        .btn-view-data {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #52b788;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .btn-view-data:hover {
+            text-decoration: underline;
+            color: #2d6a4f;
+        }
+    </style>
 </head>
 <body>
-    <center>
-        <h2>REGISTRO DE GUSTOS POR APRENDIZ</h2>
-    </center>
-    <form action="logica.php" method="post">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Apellidos:</label>
-            <input type="text" required maxlength="200" name="apellidos" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nombres:</label>
-            <input type="text" required maxlength="200" name="nombres" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Color favorito:</label>
-            <input type="text" required maxlength="200" name="color" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Comida favorita:</label>
-            <input type="text" required maxlength="200" name="comida" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Tipo de literatura y cine:</label>
-            <input type="text" required maxlength="200" name="pelicula" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar mi respuesta</button>
-    </form>
+
+    <div class="form-container">
+        <center>
+            <h2>Registro de Gustos</h2>
+        </center>
+        
+        <form action="logica.php" method="post">
+            <div class="mb-3">
+                <label class="form-label">Apellidos:</label>
+                <input type="text" required maxlength="200" name="apellidos" class="form-control" placeholder="Ej. Gómez Pérez">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombres:</label>
+                <input type="text" required maxlength="200" name="nombres" class="form-control" placeholder="Ej. Juan Carlos">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Color favorito:</label>
+                <input type="text" required maxlength="200" name="color" class="form-control" placeholder="Ej. Verde esmeralda">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Comida favorita:</label>
+                <input type="text" required maxlength="200" name="comida" class="form-control" placeholder="Ej. Bandeja paisa / Pizza">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de literatura y cine:</label>
+                <input type="text" required maxlength="200" name="pelicula" class="form-control" placeholder="Ej. Ciencia Ficción / Terror">
+            </div>
+            
+            <button type="submit" class="btn btn-custom">Registrar mi respuesta</button>
+        </form>
+
+        <a href="registros.php" class="btn-view-data">Ver todos los registros antiguos →</a>
+    </div>
+
 </body>
 </html>

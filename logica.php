@@ -5,12 +5,11 @@ $hoy = date("Y-m-d H:i:s");
 
 require 'vendor/autoload.php'; // Cargar Composer
 
-// VALIDACIÓN: Solo procesar si el usuario envió el formulario por POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $cliente = new MongoDB\Client("mongodb+srv://andresg3016_db_user:9zGxNgOxqJHtKICk@cluster0.cngc6uf.mongodb.net/?appName=Cluster0");
-    $db = $cliente->prueba; // Nombre de BD
-    $coleccion = $db->gustos;   // Nombre de la coleccion    
+    $db = $cliente->prueba; 
+    $coleccion = $db->gustos;   
     
     $resultado = $coleccion->insertOne([
         "apellidos" => $_POST["apellidos"] ?? '',
@@ -21,18 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "registro" => $hoy
     ]);
     
-    // Estilo bonito para el mensaje de éxito usando el CSS nuevo
+    // 1. Pintamos el aviso bonito en pantalla
     echo "<div style='background-color: #2d6a4f; color: white; text-align: center; padding: 15px; font-family: sans-serif; font-weight: bold;'>";
     echo "¡Documento insertado con éxito! ID: " . $resultado->getInsertedId();
     echo "</div>";
     
-    // Redirigir a la tabla de registros automáticamente después de 2 segundos
-    header("Refresh: 2; url=registros.php");
     echo "<center style='font-family: sans-serif; margin-top: 20px;'>Redirigiendo a la lista de registros...</center>";
-    exit(); // Detiene la ejecución para que haga la redirección limpia
+    
+    // 2. Quitamos el 'header()' problemático y usamos JavaScript para la redirección (espera 2 segundos)
+    echo "<script>
+            setTimeout(function() {
+                window.location.href = 'registros.php';
+            }, 2000);
+          </script>";
+          
+    exit(); 
 
 } else {
-    // Si alguien intenta entrar a logica.php directamente sin enviar el formulario, lo mandamos al index
     header("Location: index.html");
     exit();
 }
